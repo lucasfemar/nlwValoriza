@@ -1,5 +1,6 @@
 import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Exclude } from "class-transformer";
 
 @Entity("users") // defininto a tabela que a entidade ira se referir
 class User {
@@ -16,6 +17,7 @@ class User {
     @Column()
     admin: boolean;
 
+    @Exclude() // Não mostrar a senha no response da chamada da api
     @Column()
     password: string;
 
@@ -26,8 +28,8 @@ class User {
     updated_at: Date;
 
     constructor() {
-        if(!this.id){
-            this.id = uuid(); 
+        if (!this.id) {
+            this.id = uuid();
         }
     }
 }

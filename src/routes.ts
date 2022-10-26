@@ -20,39 +20,18 @@ const listUserReceiveComplimentsController = new ListUserReceiveComplimentsContr
 const listTagsController = new ListTagsController();
 const listUsersConroller = new ListUsersController();
 // Rota contendo um middleware só pra ela.
-router.post(
-    "/tags",
-    ensureAuthenticated,
-    ensureAdmin,
-    createTagController.handle
-);
+router.post("/tags", ensureAuthenticated, ensureAdmin, createTagController.handle);
 
 router.post("/users", createUserController.handle);
 router.post("/login", authenticateUserController.handle);
 
-router.post(
-    "/compliments",
-    ensureAuthenticated,
-    createComplimentController.handle
-);
+router.post("/compliments", ensureAuthenticated, createComplimentController.handle);
 
-router.get(
-    "/users/compliments/send",
-    ensureAuthenticated,
-    listUserSendComplimentsController.handle
-);
+router.get("/users/compliments/send", ensureAuthenticated, listUserSendComplimentsController.handle);
 
-router.get(
-    "/users/compliments/receive",
-    ensureAuthenticated,
-    listUserReceiveComplimentsController.handle
-);
+router.get("/users/compliments/receive", ensureAuthenticated, listUserReceiveComplimentsController.handle);
 
-router.get(
-    "/tags",
-    ensureAuthenticated,
-    listTagsController.handle
-);
+router.get("/tags", ensureAuthenticated, listTagsController.handle);
 
 router.get("/users", ensureAuthenticated, listUsersConroller.handle);
 
